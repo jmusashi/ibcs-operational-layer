@@ -34,22 +34,31 @@ markdown_extensions:
 
 nav:
   - Home: README.md
+
   - MRS Documentation:
       - Overview: docs/mrs_overview.md
       - Design Principles: docs/design_principles.md
       - Extension Guide: docs/mrs_extension_guide.md
-      - Paper 6.1 Mapping: docs/paper_6_1_mapping.md
+      - Paper 6.1 Mapping (Legacy): docs/paper_6_1_mapping.md
       - Convergence Guarantees: docs/convergence_guarantees.md
       - Pipeline Diagram: docs/diagrams/mrs_pipeline_diagram.md
+
   - CTS (Validation Layer):
       - CTS Overview: docs/cts/cts_overview.md
       - Compliance README: compliance/cts/README.md
+
   - Papers:
       - Reserved: docs/papers/
+
   - Paper 6.1 Operational Addendum:
       - Overview: paper_6_1/index.md
       - Architecture Overview: paper_6_1/architecture_overview.md
       - MRS Mapping: paper_6_1/mrs_mapping.md
       - CTS Mapping: paper_6_1/cts_mapping.md
+      - Invariants: paper_6_1/paper_6_1_invariants.md
+      - Surfaces: paper_6_1/paper_6_1_surfaces.md
+      - Continuity Engine: paper_6_1/paper_6_1_continuity.md
+      - Governance Layer: paper_6_1/paper_6_1_governance.md
+      - Design Principles: paper_6_1/paper_6_1_design_principles.md
       - Simulation Examples: paper_6_1/simulation_examples.md
       - API Reference: paper_6_1/api_reference.md
