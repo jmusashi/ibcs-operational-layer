@@ -1,0 +1,48 @@
+site_name: IBCS Operational Layer — Minimal Reference System (MRS)
+site_url: https://jmusashi.github.io/ibcs-operational-layer/
+repo_url: https://github.com/jmusashi/ibcs-operational-layer
+repo_name: ibcs-operational-layer
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: blue
+    - scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: README.md
+  - MRS Documentation:
+      - Overview: docs/mrs_overview.md
+      - Design Principles: docs/design_principles.md
+      - Extension Guide: docs/mrs_extension_guide.md
+      - Paper 6.1 Mapping: docs/paper_6_1_mapping.md
+      - Convergence Guarantees: docs/convergence_guarantees.md
+      - Pipeline Diagram: docs/diagrams/mrs_pipeline_diagram.md
+  - CTS (Validation Layer):
+      - CTS Overview: docs/cts/cts_overview.md
+      - Compliance README: compliance/cts/README.md
+  - Papers:
+      - Reserved: docs/papers/
