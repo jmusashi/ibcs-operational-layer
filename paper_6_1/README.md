@@ -1,18 +1,54 @@
-# Paper 6.1 – Operational addendum
+\# IBCS Operational Layer — Minimal Reference System (MRS)
 
-This package implements the **mapping layer** between:
 
-- Paper 6 theoretical invariants, and
-- The concrete MRS + CTS substrate in this repository.
 
-It is intentionally small and explicit:
+This repository contains the \*\*operational implementation\*\* of  
 
-- `mapping_mrs.py` – maps invariants to MRS configurations and runs
-- `mapping_cts.py` – maps governance invariants to CTS configurations and evaluations
-- `simulation_examples.py` – minimal scenarios that exercise the mappings
+\*\*Invariant‑Based Coordination Science (IBCS)\*\* as defined in:
 
-You can use this package as the canonical entry point for:
 
-- Demonstrations
-- Experiments
-- Higher‑level tooling (e.g., Paper 7 orchestration)
+
+\- \*\*Paper 6 — Invariant‑Based Coordination Science (IBCS)\*\*
+
+\- \*\*Paper 6.1 — IBCS Operational Addendum and Implementation Framework\*\*
+
+
+
+The MRS (Minimal Reference System) is the reference simulation engine that demonstrates:
+
+
+
+\- heterogeneous decision surfaces  
+
+\- contraction‑based reflexive updates  
+
+\- invariant synchronization  
+
+\- bounded drift  
+
+\- finite‑step convergence to the Serenpoint (ε)
+
+
+
+It is the canonical operational layer for Papers 6.1 → 10.x.
+
+
+
+\---
+
+
+
+\## ⚡ Quickstart
+
+
+
+Run the example MRS simulation:
+
+
+
+```bash
+
+python simulation/mrs/example\_basic\_mrs\_run.py
+
+
+
