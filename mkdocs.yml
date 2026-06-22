@@ -46,3 +46,10 @@ nav:
       - Compliance README: compliance/cts/README.md
   - Papers:
       - Reserved: docs/papers/
+  - Paper 6.1 Operational Addendum:
+      - Overview: paper_6_1/index.md
+      - Architecture Overview: paper_6_1/architecture_overview.md
+      - MRS Mapping: paper_6_1/mrs_mapping.md
+      - CTS Mapping: paper_6_1/cts_mapping.md
+      - Simulation Examples: paper_6_1/simulation_examples.md
+      - API Reference: paper_6_1/api_reference.md
