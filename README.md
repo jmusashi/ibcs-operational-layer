@@ -1,4 +1,5 @@
 # IBCS Operational Layer · Minimal Reference System (MRS)
+https://doi.org/10.5281/zenodo.20900697
 
 This repository contains the **operational implementation** of  
 **Invariant‑Based Coordination Science (IBCS)** as defined in:
