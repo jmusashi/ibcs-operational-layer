@@ -1,163 +1,120 @@
-# IBCS Operational Layer · Minimal Reference System (MRS)
-https://doi.org/10.5281/zenodo.20900697
+# IBCS Operational Layer · Minimal Reference Simulation (MRS)
 
-This repository contains the **operational implementation** of  
-**Invariant‑Based Coordination Science (IBCS)** as defined in:
+[Zenodo DOI: 10.5281/zenodo.20900697](https://doi.org/10.5281/zenodo.20900697)
 
-- **Paper 6 — Invariant‑Based Coordination Science (IBCS)**
-- **Paper 6.1 — IBCS Operational Addendum and Implementation Framework**
+This repository provides a deliberately minimal executable research substrate for **Invariant-Based Coordination Science (IBCS)** as defined by:
 
-The MRS (Minimal Reference System) is the reference simulation engine that demonstrates:
+- **Paper 6 — Invariant-Based Coordination Science (IBCS)**, the theoretical authority.
+- **Paper 6.1 — IBCS Operational Addendum and Implementation Framework**, the operational implementation framework.
 
-- heterogeneous decision surfaces  
-- contraction‑based reflexive updates  
-- invariant synchronization  
-- bounded drift  
-- finite‑step convergence to the Serenpoint (ε)
+The repository does not redefine the canonical theory or represent the downstream IBCS research program as complete.
 
-It is the canonical operational layer for Papers **6.1 → 10.x**.
+## Implementation Boundary
 
----
+The canonical IBCS invariant is:
 
-## ⚡ Quickstart
+`C = {I, T, K}`
 
-Run the example MRS simulation:
+and the canonical reflexive mapping is:
+
+`C′ = R(Sᵢ, C)`
+
+Paper 6 and Paper 6.1 define convergence over transformed invariant outputs `C′` under their specified mathematical conditions.
+
+The current minimal executable uses the intent component `T` as a quantitative projection for convergence observation. This T-projected observable does not redefine canonical full-`C′` convergence and should not be interpreted as exhaustive IBCS compliance verification.
+
+Notation is kept distinct throughout this repository:
+
+- `σ` = Serenpoint
+- `ε` = convergence threshold or tolerance, as applicable
+
+## What the Minimal Reference Simulation Demonstrates
+
+The current MRS provides a compact executable starting point for exploring:
+
+- heterogeneous bounded decision surfaces;
+- independent evaluation of `R(Sᵢ, C)` from a shared invariant;
+- zero inter-agent communication in the canonical update cycle;
+- bounded surface evolution;
+- T-projected convergence observation; and
+- generation of a Serenpoint candidate under the implemented projection.
+
+The shared canonical invariant remains read-only during the simulation while the decision surfaces evolve.
+
+## Quickstart
+
+Run the basic executable example:
 
 ```bash
 python simulation/mrs/example_basic_mrs_run.py
-You will see:
+```
 
-agent outputs per iteration
+The example reports agent intent outputs, pairwise T-projected distances, and whether the implemented projected stopping condition has been reached.
 
-pairwise distances
+Because the current example uses a T-projected observable, its reported result is best interpreted as a **Serenpoint candidate under the implemented projection** rather than complete canonical fixed-point verification.
 
-convergence detection
+## MRS Architecture
 
-the Serenpoint (ε)
+Paper 6.1 operationalizes the MRS through five components:
 
-📐 MRS Pipeline Overview
-See the full diagram here:
+1. **Invariant Store** — holds the shared read-only invariant `C = {I, T, K}`.
+2. **Agent Pool** — contains heterogeneous agents with distinct decision surfaces `Sᵢ`.
+3. **Surface Generator** — produces and updates bounded heterogeneous surfaces.
+4. **Reflexive Engine** — independently evaluates `R(Sᵢ, C)`.
+5. **Convergence Monitor** — observes agent outputs and evaluates the stopping condition.
 
-Code
-docs/diagrams/mrs_pipeline_diagram.md
-The pipeline includes:
+The Convergence Monitor observes convergence; it is not the mechanism producing convergence.
 
-Initialize invariant C
+## Repository Structure
 
-Generate heterogeneous surfaces
-
-Apply contraction mapping
-
-Synchronize invariant T
-
-Update surfaces with bounded drift
-
-Check convergence
-
-Output the Serenpoint (ε)
-
-📁 Folder Structure
-Code
-Code
+```text
 simulation/mrs/
-    mrs_core.py
-    reflexive_engine.py
-    surface_generator.py
-    convergence_monitor.py
     example_basic_mrs_run.py
-Documentation
-Code
+    ...
+
+compliance/cts/
+    README.md
+    cts_core.py
+    cts_monitor.py
+    cts_rules.py
+
 docs/
     mrs_overview.md
-    design_principles.md
-    mrs_extension_guide.md
-    paper_6_1_mapping.md
-    convergence_guarantees.md
-    diagrams/
-        mrs_pipeline_diagram.md
-    cts/
-        cts_overview.md
-    papers/
-🔧 Core Components
-ReflexiveEngine
-Implements the contraction mapping:
+    ...
+```
 
-Code
-T' = T - L(T - f(Si))
-with 0 < L < 1 to guarantee convergence.
+The ellipses indicate that additional repository files may be present. This README highlights only the paths directly relevant to the audited MRS and CTS boundary.
 
-SurfaceGenerator
-Produces heterogeneous surfaces with bounded drift:
+## Compliance Test Suite (CTS v1.0)
 
-load
+The repository includes minimal executable checks corresponding to the five CTS v1.0 criteria:
 
-noise
+- **CTS-1 — Invariant Preservation**
+- **CTS-2 — Serenpoint Stability**
+- **CTS-3 — Cross-Surface Convergence**
+- **CTS-4 — Noise Robustness**
+- **CTS-5 — Drift Resistance**
 
-drift
+The canonical criteria are defined in Paper 6 and operationalized in Paper 6.1. Where the current executable checks use a projection, proxy, Boolean outcome, or simplified observable, those implementations do not redefine the canonical criterion.
 
-All values remain in [0, 1].
+See `compliance/cts/README.md` for the implementation boundary and interpretation of results.
 
-MinimalReferenceSystem
-Coordinates:
+## Documentation
 
-surface updates
+- MRS overview: `docs/mrs_overview.md`
+- CTS implementation notes: `compliance/cts/README.md`
 
-invariant synchronization
+Other repository documentation may describe additional design or extension material. The two documents above contain the audited boundary for the current minimal MRS/CTS implementation.
 
-application of R
+## Research Boundary
 
-agent orchestration
+This repository is a starting substrate for continued IBCS implementation research. It does **not** attempt to pre-empt downstream work identified by Paper 6.1, including broader simulation libraries, richer domain-specific implementations, later CTS development, benchmark suites, certification processes, or production deployment frameworks.
 
-ConvergenceMonitor
-Detects convergence when all pairwise distances fall below ε.
+Accordingly, passing the current minimal executable checks should not, by itself, be described as exhaustive proof of full IBCS compliance.
 
-🎯 Serenpoint (ε)
-The Serenpoint is the stable equilibrium reached when:
+## Reference
 
-Code
-|Ti - Tj| < ε   for all i, j
-The example script prints ε when convergence occurs.
+- **Paper 6:** *Invariant-Based Coordination Science (IBCS)*
+- **Paper 6.1:** *IBCS Operational Addendum and Implementation Framework*
 
-📚 Documentation Hub
-The full documentation is located under docs/.
-
-Core Documents
-MRS Overview — docs/mrs_overview.md
-
-Design Principles — docs/design_principles.md
-
-Extension Guide — docs/mrs_extension_guide.md
-
-Paper 6.1 Mapping — docs/paper_6_1_mapping.md
-
-Convergence Guarantees — docs/convergence_guarantees.md
-
-Validation Layer
-Convergence Test Suite (CTS) — docs/cts/cts_overview.md
-
-Diagrams
-MRS Pipeline Diagram — docs/diagrams/mrs_pipeline_diagram.md
-
-Papers
-Reserved for future PDFs and drafts — docs/papers/
-
-🔗 Reference
-This implementation corresponds to:
-
-Paper 6.1 — The Minimal Reference System (MRS)  
-(See Zenodo DOI in the main project documentation)
-
-🎯 Purpose of This Repository
-This repository serves as the reference implementation for:
-
-Paper 6.1 (MRS)
-
-Paper 7 (Cross‑Domain Structural Cognition)
-
-Paper 8 (Domain Projection Systems)
-
-Paper 9.x (Monasterial Scale, M‑levels, 4RGE fabric)
-
-Paper 10.x (Applied Systems: Governance, Education, Healthcare, Finance, etc.)
-
-It is the canonical substrate for the IBCS Operational Layer.
+Paper 6 defines the canonical theory. Paper 6.1 provides the operational implementation framework. This repository provides a deliberately minimal executable substrate derived from those specifications.
